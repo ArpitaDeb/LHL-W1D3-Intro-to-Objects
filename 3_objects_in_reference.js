@@ -1,50 +1,59 @@
 /*
  * Objects are passed by reference.
  */
+
+const str1 = 'hi';
+const str2 = 'hi';
 const wiley = { name: 'Wiley', type: 'cat', age: 7 };
 const memu = wiley;
 memu.name = 'Memu';
-memu.age = 2;
+memu.age = 3;
 
-// Problem! Modify memu, also modifies wiley.
-console.log(memu);
 console.log(wiley);
+console.log(memu);
+
 
 /*
  * Re-assigning a parameter, does not change the variable that was passed in.
  */
-function outputName(pet) {
-  pet = { name: 'Memu', type: 'cat', age: 2 };
-  console.log(pet);
+function changeParam(param) {
+  param = 'something else';
+  console.log(param);
 }
-outputName(wiley);
-console.log(wiley); // wiley is untouched
 
-function modifyStr(str) {
-  str = 'goodbye';
-  console.log(str);
-}
-const inputStr = 'hello';
-modifyStr(inputStr);
-console.log(inputStr); // inputStr is untouched
+const str = 'yolo';
+changeParam(str);
+console.log(str);
+
+const arr = [1, 2, 3];
+changeParam(arr);
+console.log(arr);
+
+const obj = { a: 'b' };
+changeParam(obj);
+console.log(obj);
 
 /*
  * Modifying keys on an object DOES change the variable that was passed in.
  */
-function outputName(pet) {
-  pet.name = 'Memu';
-  console.log(pet);
+function modifyName(pet) {
+  pet.name = 'Not Wiley';
+  console.log(pet.name);
 }
-outputName(wiley);
-console.log(wiley); // wiley's name is now Memu!
+const pet = { name: 'Wiley' };
+console.log(pet);
+modifyName(pet);
+console.log(pet);
 
 /*
  * Modifying an array that is passed to a function DOES change the variable that was passed in.
  */
-function modifyNames(names) {
-  names.push('Vasily');
+function modifyArr(arr) {
+  arr[0] = 'yolo';
+  console.log(arr);
 }
-const instructors = ['Victoria', 'Tim'];
-console.log(instructors);
-modifyNames(instructors);
-console.log(instructors); // instructors now includes 'Vasily'!
+
+const modArr = [1, 2, 3];
+console.log(modArr);
+modifyArr(modArr);
+console.log(modArr);

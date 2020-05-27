@@ -35,10 +35,8 @@ while (i < numbers.length) { i++; }
 
 ## 2. Objects 101
 - Types:
-  - 6 Primitives (string, number, boolean, undefined, bigint, symbol)
-  - null
-  - Object (includes Arrays)
-  - Functions
+  - 7 Primitives (string, number, boolean, undefined, null, bigint, symbol)
+  - Non-Primitives / Objects (Objects, Arrays, Functions)
 - Object is key-value paired data
 - Example:
 ```js

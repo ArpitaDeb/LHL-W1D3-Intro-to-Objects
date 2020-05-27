@@ -1,73 +1,93 @@
-/* 
- * Primitives: 
- * They are immutable, meaning that every time you assign a variable to a primitive, 
- * it accesses a new part in memory.
+/*
+ * Primitives
  */
 
-const str = 'hello';
-let str2 = str;
-str2 += ' guys!';
+const name = 'Victoria';
+let someoneElsesName = name;
 
-console.log(str);
-console.log(str2);
+// console.log(name);
+// console.log(someoneElsesName);
 
-const num = 100;
+someoneElsesName += ' eyy';
+
+console.log(someoneElsesName);
+console.log(name);
+
+const num = 1;
 let num2 = num;
+
+console.log(num);
+console.log(num2);
+
 num2 += 1;
 
 console.log(num);
 console.log(num2);
 
-const bool = true;
+const truthyBool = true;
+let falseyBool = truthyBool;
 
-console.log(bool);
+console.log(truthyBool);
+console.log(falseyBool);
 
-const undef = undefined;
+falseyBool = false;
 
-console.log(undef);
+console.log(truthyBool);
+console.log(falseyBool);
+
+/*
+ * Objects
+ */
+
+const pet = { name: 'Wiley', type: 'cat', age: 7 };
+
+console.log('Pet: ', pet);
+
+console.log('name: ', pet.name);
+
+const key = 'type';
+
+console.log('type: ', pet[key]);
+
 
 /*
  * Looping with Objects
  */
 
-const pet = { name: 'Wiley', type: 'cat', age: 7 };
+function createPet(name, type, age) {
+  return { name: name, type: type, age: age };
+}
 
-console.log(pet.name);
-
-const key = 'type';
-
-console.log(pet[key]);
+const wiley = createPet('Wiley', 'cat', 7);
+console.log(wiley);
 
 /*
  * for...in
  */
-function petProfile(pet) {
+
+function outputPet(pet) {
   for (let key in pet) {
-    console.log(`Key: ${key}, Value: ${pet[key]}`);
+    const value = pet[key];
+
+    const output = `Key: ${key}, Value: ${value}`;
+    console.log(output);
   }
 }
 
-petProfile(pet);
+outputPet(wiley);
 
 /*
  * Object.keys()
  */
-function petProfileWithObjectKeys(pet) {
+
+function outputPetObjectKeys(pet) {
   const keys = Object.keys(pet);
-  console.log(keys);
   keys.forEach(function (key) {
-    console.log(`Key: ${key}, Value: ${pet[key]}`);
+    const value = pet[key];
+
+    const output = `Key: ${key}, Value: ${value}`;
+    console.log(output);
   });
 }
 
-petProfileWithObjectKeys(pet);
-
-/*
- * Object.values()
- */
-function petProfileWithObjectValues(pet) {
-  const values = Object.values(pet);
-  console.log(values);
-}
-
-petProfileWithObjectValues(pet);
+outputPetObjectKeys(wiley);
